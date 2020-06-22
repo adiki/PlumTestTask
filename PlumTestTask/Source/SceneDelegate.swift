@@ -22,7 +22,27 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Create the SwiftUI view that provides the window contents.
         let contentView = RootViewBuilder.makeRootView(
             viewStore: Store(
-                initialState: AppState(),
+                initialState: AppState(
+                    status: .idle,
+                    allHeros: [
+                        Hero(name: "Name 1"),
+                        Hero(name: "Name 2"),
+                        Hero(name: "Name 3"),
+                        Hero(name: "Name 4"),
+                        Hero(name: "Name 5"),
+                        Hero(name: "Name 6"),
+                        Hero(name: "Name 7"),
+                        Hero(name: "Name 8")
+                    ],
+                    squadHeros: [
+                        Hero(name: "Name 1"),
+                        Hero(name: "Name 2"),
+                        Hero(name: "Name 3"),
+                        Hero(name: "Name 4"),
+                        Hero(name: "Name 5"),
+                        Hero(name: "Name 6"),
+                    ]
+                ),
                 reducer: appReducer,
                 environment: AppEnvironment()
             ).view
@@ -31,7 +51,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: contentView)
+            window.rootViewController = DarkHostingController(rootView: contentView)
             self.window = window
             window.makeKeyAndVisible()
         }

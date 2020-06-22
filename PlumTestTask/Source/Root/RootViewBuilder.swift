@@ -11,18 +11,26 @@ import SwiftUI
 
 enum RootViewBuilder {
     static func makeRootView(viewStore: ViewStore<AppState, AppAction>) -> some View {
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         let flowDecorator: (AnyView) -> AnyView = { view in
             GeometryReader { geometry in
                 NavigationView {
-                    view
-                        .navigationBarItems(trailing:
-                            Image(Images.marvelLogo)
-                                .frame(width: geometry.size.width)
+                    ZStack {
+                        Color.background.edgesIgnoringSafeArea(.all)
+                        view
+                            .navigationBarTitle("", displayMode: .inline)
+                            .navigationBarItems(trailing:
+                                Image(Images.marvelLogo)
+                                    .frame(width: geometry.size.width)
                         )
+                    }
                 }
             }
             .eraseToAnyView()
         }
-        return RootView(flowDecorator: flowDecorator)
+        return RootView(
+            viewStore: viewStore,
+            flowDecorator: flowDecorator
+        )
     }
 }

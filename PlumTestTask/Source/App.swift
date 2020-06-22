@@ -8,10 +8,18 @@
 
 import ComposableArchitecture
 
-struct AppState: Equatable {    
+struct AppState: Equatable {
+    enum Status {
+        case loading
+        case idle
+    }
+    var status = Status.idle
+    var allHeros: [Hero] = []
+    var squadHeros: [Hero] = []
 }
 
 enum AppAction {
+    case initialize
 }
 
 struct AppEnvironment {
@@ -19,5 +27,7 @@ struct AppEnvironment {
 
 let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, environment in
     switch action {
+    case .initialize:
+        return .none
     }
 }
