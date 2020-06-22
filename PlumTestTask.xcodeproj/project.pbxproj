@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,14 @@
 		2C0DDF65249BF83B007DC237 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C0DDF64249BF83B007DC237 /* Assets.xcassets */; };
 		2C0DDF68249BF83B007DC237 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C0DDF67249BF83B007DC237 /* Preview Assets.xcassets */; };
 		2C0DDF6B249BF83B007DC237 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C0DDF69249BF83B007DC237 /* LaunchScreen.storyboard */; };
+		2C98831D24A0D534003D2595 /* RootViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C98831C24A0D534003D2595 /* RootViewBuilder.swift */; };
+		2C98831F24A0D5A0003D2595 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C98831E24A0D5A0003D2595 /* RootView.swift */; };
+		2C98832324A0D69F003D2595 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C98832224A0D69F003D2595 /* View+Extensions.swift */; };
+		2C98832624A0DCA5003D2595 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C98832524A0DCA5003D2595 /* Images.swift */; };
+		2C98832924A0F2A0003D2595 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 2C98832824A0F2A0003D2595 /* ComposableArchitecture */; };
+		2C98832C24A0F32E003D2595 /* RootTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C98832A24A0F2BC003D2595 /* RootTests.swift */; };
+		2C98832E24A0F65E003D2595 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C98832D24A0F65E003D2595 /* App.swift */; };
+		2C98833024A0F77A003D2595 /* Store+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C98832F24A0F77A003D2595 /* Store+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +51,13 @@
 		2C0DDF77249BF83B007DC237 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C0DDF7C249BF83B007DC237 /* PlumTestTaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlumTestTaskUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C0DDF82249BF83B007DC237 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C98831C24A0D534003D2595 /* RootViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewBuilder.swift; sourceTree = "<group>"; };
+		2C98831E24A0D5A0003D2595 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		2C98832224A0D69F003D2595 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		2C98832524A0DCA5003D2595 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		2C98832A24A0F2BC003D2595 /* RootTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTests.swift; sourceTree = "<group>"; };
+		2C98832D24A0F65E003D2595 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		2C98832F24A0F77A003D2595 /* Store+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Store+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C98832924A0F2A0003D2595 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,11 +109,9 @@
 		2C0DDF5D249BF839007DC237 /* PlumTestTask */ = {
 			isa = PBXGroup;
 			children = (
-				2C0DDF5E249BF839007DC237 /* AppDelegate.swift */,
-				2C0DDF60249BF839007DC237 /* SceneDelegate.swift */,
-				2C0DDF64249BF83B007DC237 /* Assets.xcassets */,
-				2C0DDF69249BF83B007DC237 /* LaunchScreen.storyboard */,
 				2C0DDF6C249BF83B007DC237 /* Info.plist */,
+				2C98832124A0D67B003D2595 /* Source */,
+				2C98831B24A0D4A9003D2595 /* Resources */,
 				2C0DDF66249BF83B007DC237 /* Preview Content */,
 			);
 			path = PlumTestTask;
@@ -127,6 +141,55 @@
 			path = PlumTestTaskUITests;
 			sourceTree = "<group>";
 		};
+		2C98831A24A0D48E003D2595 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				2C98831C24A0D534003D2595 /* RootViewBuilder.swift */,
+				2C98831E24A0D5A0003D2595 /* RootView.swift */,
+				2C98832A24A0F2BC003D2595 /* RootTests.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		2C98831B24A0D4A9003D2595 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2C0DDF64249BF83B007DC237 /* Assets.xcassets */,
+				2C0DDF69249BF83B007DC237 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		2C98832024A0D672003D2595 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2C98832F24A0F77A003D2595 /* Store+Extensions.swift */,
+				2C98832224A0D69F003D2595 /* View+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2C98832124A0D67B003D2595 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				2C0DDF5E249BF839007DC237 /* AppDelegate.swift */,
+				2C0DDF60249BF839007DC237 /* SceneDelegate.swift */,
+				2C98832D24A0F65E003D2595 /* App.swift */,
+				2C98832424A0DC98003D2595 /* Common */,
+				2C98832024A0D672003D2595 /* Extensions */,
+				2C98831A24A0D48E003D2595 /* Root */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		2C98832424A0DC98003D2595 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				2C98832524A0DCA5003D2595 /* Images.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +206,9 @@
 			dependencies = (
 			);
 			name = PlumTestTask;
+			packageProductDependencies = (
+				2C98832824A0F2A0003D2595 /* ComposableArchitecture */,
+			);
 			productName = PlumTestTask;
 			productReference = 2C0DDF5B249BF839007DC237 /* PlumTestTask.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +281,9 @@
 				Base,
 			);
 			mainGroup = 2C0DDF52249BF839007DC237;
+			packageReferences = (
+				2C98832724A0F2A0003D2595 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
 			productRefGroup = 2C0DDF5C249BF839007DC237 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -258,8 +327,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C98831F24A0D5A0003D2595 /* RootView.swift in Sources */,
+				2C98833024A0F77A003D2595 /* Store+Extensions.swift in Sources */,
+				2C98832624A0DCA5003D2595 /* Images.swift in Sources */,
 				2C0DDF5F249BF839007DC237 /* AppDelegate.swift in Sources */,
 				2C0DDF61249BF839007DC237 /* SceneDelegate.swift in Sources */,
+				2C98832324A0D69F003D2595 /* View+Extensions.swift in Sources */,
+				2C98832E24A0F65E003D2595 /* App.swift in Sources */,
+				2C98831D24A0D534003D2595 /* RootViewBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +342,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C98832C24A0F32E003D2595 /* RootTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,6 +658,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2C98832724A0F2A0003D2595 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:pointfreeco/swift-composable-architecture.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2C98832824A0F2A0003D2595 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C98832724A0F2A0003D2595 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2C0DDF53249BF839007DC237 /* Project object */;
 }
