@@ -19,6 +19,7 @@ struct HeroRow: View {
         HStack {
             Image(Images.marvelLogo)
                 .resizable()
+                .scaledToFill()
                 .clipShape(Circle())
                 .frame(width: 44, height: 44)
             Text(hero.name)

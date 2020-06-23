@@ -46,6 +46,7 @@ struct RootView: View {
                             HStack {
                                 ForEach(viewStore.squadHeros, id: \.self) { hero in
                                     HeroCell(hero: hero)
+                                        .padding([.trailing], 4)
                                 }
                             }
                         }
@@ -70,27 +71,7 @@ struct RootView_Previews: PreviewProvider {
     static var previews: some View {
         RootViewBuilder.makeRootView(
             viewStore: Store(
-                initialState: AppState(
-                    status: .idle,
-                    allHeros: [
-                        Hero(name: "Name 1"),
-                        Hero(name: "Name 2"),
-                        Hero(name: "Name 3"),
-                        Hero(name: "Name 4"),
-                        Hero(name: "Name 5"),
-                        Hero(name: "Name 6"),
-                        Hero(name: "Name 7"),
-                        Hero(name: "Name 8")
-                    ],
-                    squadHeros: [
-                        Hero(name: "Name 1"),
-                        Hero(name: "Name 2"),
-                        Hero(name: "Name 3"),
-                        Hero(name: "Name 4"),
-                        Hero(name: "Name 5"),
-                        Hero(name: "Name 6")
-                    ]
-                ),
+                initialState: testState,
                 reducer: appReducer,
                 environment: AppEnvironment()
             ).view

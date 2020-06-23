@@ -16,6 +16,10 @@ struct AppState: Equatable {
     var status = Status.idle
     var allHeros: [Hero] = []
     var squadHeros: [Hero] = []
+    
+    func doesSquadContain(hero: Hero) -> Bool {
+        squadHeros.contains(hero)
+    }
 }
 
 enum AppAction {
@@ -31,3 +35,25 @@ let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, e
         return .none
     }
 }
+
+let testState = AppState(
+    status: .idle,
+    allHeros: [
+        Hero(name: "Name 1", biography: "Biography"),
+        Hero(name: "Name 2", biography: "Biography"),
+        Hero(name: "Name 3", biography: "Biography"),
+        Hero(name: "Name 4", biography: "Biography"),
+        Hero(name: "Name 5", biography: "Biography"),
+        Hero(name: "Name 6", biography: "Biography"),
+        Hero(name: "Name 7", biography: "Biography"),
+        Hero(name: "Name 8", biography: "Biography")
+    ],
+    squadHeros: [
+        Hero(name: "Name 1", biography: "Biography"),
+        Hero(name: "Name 2", biography: "Biography"),
+        Hero(name: "Name 3", biography: "Biography"),
+        Hero(name: "Name 4", biography: "Biography"),
+        Hero(name: "Name 5", biography: "Biography"),
+        Hero(name: "Name 6", biography: "Biography")
+    ]
+)

@@ -10,4 +10,5 @@ import Foundation
 
 struct Hero: Hashable {
     let name: String
+    let biography: String
 }

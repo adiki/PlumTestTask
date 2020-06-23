@@ -26,6 +26,9 @@
 		2C98833B24A11924003D2595 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C98833A24A11924003D2595 /* Color+Extensions.swift */; };
 		2CE1554624A12BE000C018DE /* Collections+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE1554524A12BE000C018DE /* Collections+Extensions.swift */; };
 		2CE1554824A130C600C018DE /* HeroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE1554724A130C600C018DE /* HeroCell.swift */; };
+		2CE1554B24A1E20C00C018DE /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE1554A24A1E20C00C018DE /* DetailsView.swift */; };
+		2CE1554D24A1F50700C018DE /* ComicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE1554C24A1F50700C018DE /* ComicCell.swift */; };
+		2CE1555124A20DF100C018DE /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE1555024A20DF100C018DE /* Strings.swift */; };
 		2CEA006124A12A8900A2A857 /* DarkHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEA006024A12A8900A2A857 /* DarkHostingController.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +74,9 @@
 		2C98833A24A11924003D2595 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		2CE1554524A12BE000C018DE /* Collections+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collections+Extensions.swift"; sourceTree = "<group>"; };
 		2CE1554724A130C600C018DE /* HeroCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroCell.swift; sourceTree = "<group>"; };
+		2CE1554A24A1E20C00C018DE /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
+		2CE1554C24A1F50700C018DE /* ComicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicCell.swift; sourceTree = "<group>"; };
+		2CE1555024A20DF100C018DE /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		2CEA006024A12A8900A2A857 /* DarkHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkHostingController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -179,10 +185,10 @@
 		2C98832024A0D672003D2595 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				2CE1554524A12BE000C018DE /* Collections+Extensions.swift */,
 				2C98833A24A11924003D2595 /* Color+Extensions.swift */,
 				2C98832F24A0F77A003D2595 /* Store+Extensions.swift */,
 				2C98832224A0D69F003D2595 /* View+Extensions.swift */,
-				2CE1554524A12BE000C018DE /* Collections+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -197,6 +203,7 @@
 				2C98832024A0D672003D2595 /* Extensions */,
 				2C98833524A10D92003D2595 /* Model */,
 				2C98831A24A0D48E003D2595 /* Root */,
+				2CE1554924A13FD400C018DE /* Details */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -204,9 +211,10 @@
 		2C98832424A0DC98003D2595 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				2C98832524A0DCA5003D2595 /* Images.swift */,
 				2C98833324A0FCA2003D2595 /* ActivityIndicator.swift */,
 				2CEA006024A12A8900A2A857 /* DarkHostingController.swift */,
+				2C98832524A0DCA5003D2595 /* Images.swift */,
+				2CE1555024A20DF100C018DE /* Strings.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -217,6 +225,15 @@
 				2C98833624A10DA2003D2595 /* Hero.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		2CE1554924A13FD400C018DE /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				2CE1554A24A1E20C00C018DE /* DetailsView.swift */,
+				2CE1554C24A1F50700C018DE /* ComicCell.swift */,
+			);
+			path = Details;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -358,6 +375,7 @@
 			files = (
 				2CE1554824A130C600C018DE /* HeroCell.swift in Sources */,
 				2C98831F24A0D5A0003D2595 /* RootView.swift in Sources */,
+				2CE1554D24A1F50700C018DE /* ComicCell.swift in Sources */,
 				2C98833024A0F77A003D2595 /* Store+Extensions.swift in Sources */,
 				2C98832624A0DCA5003D2595 /* Images.swift in Sources */,
 				2C0DDF5F249BF839007DC237 /* AppDelegate.swift in Sources */,
@@ -365,10 +383,12 @@
 				2C98833724A10DA2003D2595 /* Hero.swift in Sources */,
 				2C98832324A0D69F003D2595 /* View+Extensions.swift in Sources */,
 				2C98832E24A0F65E003D2595 /* App.swift in Sources */,
+				2CE1555124A20DF100C018DE /* Strings.swift in Sources */,
 				2C98833424A0FCA2003D2595 /* ActivityIndicator.swift in Sources */,
 				2CE1554624A12BE000C018DE /* Collections+Extensions.swift in Sources */,
 				2C98831D24A0D534003D2595 /* RootViewBuilder.swift in Sources */,
 				2CEA006124A12A8900A2A857 /* DarkHostingController.swift in Sources */,
+				2CE1554B24A1E20C00C018DE /* DetailsView.swift in Sources */,
 				2C98833924A11497003D2595 /* HeroRow.swift in Sources */,
 				2C98833B24A11924003D2595 /* Color+Extensions.swift in Sources */,
 			);
