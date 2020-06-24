@@ -10,7 +10,7 @@ import ComposableArchitecture
 import SwiftUI
 
 enum RootViewBuilder {
-    static func makeRootView(viewStore: ViewStore<AppState, AppAction>) -> some View {
+    static func makeRootView(store: Store<AppState, AppAction>) -> some View {
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         let flowDecorator: (AnyView) -> AnyView = { view in
             GeometryReader { geometry in
@@ -23,13 +23,24 @@ enum RootViewBuilder {
                                 Image(Images.marvelLogo)
                                     .frame(width: geometry.size.width)
                         )
+                        NavigationLink(
+                            "",
+                            destination: DetailsView(
+                                viewStore: store.detailStore.view
+                            ),
+                            isActive: store.flowStore.view.binding(
+                                get: { $0.selectedHero != nil },
+                                send: .detailsDismissed
+                            )
+                        )
+                        .hidden()
                     }
                 }
             }
             .eraseToAnyView()
         }
         return RootView(
-            viewStore: viewStore,
+            viewStore: store.rootStore.view,
             flowDecorator: flowDecorator
         )
     }

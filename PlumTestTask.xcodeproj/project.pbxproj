@@ -29,6 +29,9 @@
 		2CE1554B24A1E20C00C018DE /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE1554A24A1E20C00C018DE /* DetailsView.swift */; };
 		2CE1554D24A1F50700C018DE /* ComicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE1554C24A1F50700C018DE /* ComicCell.swift */; };
 		2CE1555124A20DF100C018DE /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE1555024A20DF100C018DE /* Strings.swift */; };
+		2CE1555324A28C2600C018DE /* Details.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE1555224A28C2600C018DE /* Details.swift */; };
+		2CE1555524A28C3000C018DE /* Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE1555424A28C3000C018DE /* Root.swift */; };
+		2CE1555724A35E9300C018DE /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE1555624A35E9300C018DE /* Flow.swift */; };
 		2CEA006124A12A8900A2A857 /* DarkHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEA006024A12A8900A2A857 /* DarkHostingController.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +80,9 @@
 		2CE1554A24A1E20C00C018DE /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		2CE1554C24A1F50700C018DE /* ComicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicCell.swift; sourceTree = "<group>"; };
 		2CE1555024A20DF100C018DE /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		2CE1555224A28C2600C018DE /* Details.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Details.swift; sourceTree = "<group>"; };
+		2CE1555424A28C3000C018DE /* Root.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Root.swift; sourceTree = "<group>"; };
+		2CE1555624A35E9300C018DE /* Flow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
 		2CEA006024A12A8900A2A857 /* DarkHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkHostingController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -164,6 +170,7 @@
 		2C98831A24A0D48E003D2595 /* Root */ = {
 			isa = PBXGroup;
 			children = (
+				2CE1555424A28C3000C018DE /* Root.swift */,
 				2C98831C24A0D534003D2595 /* RootViewBuilder.swift */,
 				2C98831E24A0D5A0003D2595 /* RootView.swift */,
 				2C98833824A11497003D2595 /* HeroRow.swift */,
@@ -199,6 +206,7 @@
 				2C0DDF5E249BF839007DC237 /* AppDelegate.swift */,
 				2C0DDF60249BF839007DC237 /* SceneDelegate.swift */,
 				2C98832D24A0F65E003D2595 /* App.swift */,
+				2CE1555624A35E9300C018DE /* Flow.swift */,
 				2C98832424A0DC98003D2595 /* Common */,
 				2C98832024A0D672003D2595 /* Extensions */,
 				2C98833524A10D92003D2595 /* Model */,
@@ -230,6 +238,7 @@
 		2CE1554924A13FD400C018DE /* Details */ = {
 			isa = PBXGroup;
 			children = (
+				2CE1555224A28C2600C018DE /* Details.swift */,
 				2CE1554A24A1E20C00C018DE /* DetailsView.swift */,
 				2CE1554C24A1F50700C018DE /* ComicCell.swift */,
 			);
@@ -373,6 +382,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CE1555724A35E9300C018DE /* Flow.swift in Sources */,
 				2CE1554824A130C600C018DE /* HeroCell.swift in Sources */,
 				2C98831F24A0D5A0003D2595 /* RootView.swift in Sources */,
 				2CE1554D24A1F50700C018DE /* ComicCell.swift in Sources */,
@@ -382,7 +392,9 @@
 				2C0DDF61249BF839007DC237 /* SceneDelegate.swift in Sources */,
 				2C98833724A10DA2003D2595 /* Hero.swift in Sources */,
 				2C98832324A0D69F003D2595 /* View+Extensions.swift in Sources */,
+				2CE1555524A28C3000C018DE /* Root.swift in Sources */,
 				2C98832E24A0F65E003D2595 /* App.swift in Sources */,
+				2CE1555324A28C2600C018DE /* Details.swift in Sources */,
 				2CE1555124A20DF100C018DE /* Strings.swift in Sources */,
 				2C98833424A0FCA2003D2595 /* ActivityIndicator.swift in Sources */,
 				2CE1554624A12BE000C018DE /* Collections+Extensions.swift in Sources */,

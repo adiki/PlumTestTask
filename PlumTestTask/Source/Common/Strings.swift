@@ -9,6 +9,7 @@
 import Foundation
 
 enum Strings {
+    static let mySquad = "My Squad"
     static let recruitToSquad = "💪 Recruit to Squad"
     static let fireFromSquad = "🔥 Fire from Squad"
     static let lastAppearedIn = "Last appeared in"    
