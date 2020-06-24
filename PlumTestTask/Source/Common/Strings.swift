@@ -12,7 +12,8 @@ enum Strings {
     static let mySquad = "My Squad"
     static let recruitToSquad = "💪 Recruit to Squad"
     static let fireFromSquad = "🔥 Fire from Squad"
-    static let lastAppearedIn = "Last appeared in"    
+    static let lastAppearedIn = "Last appeared in"
+    static let didFailToLoadHeros = "Did fail to load heros"
     
     static func andOtherComic(number: Int) -> String {
         "and \(number) other comic\(number > 1 ? "s" : "")"

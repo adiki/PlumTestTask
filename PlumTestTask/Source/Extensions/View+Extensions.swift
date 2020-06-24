@@ -30,5 +30,9 @@ extension View {
         )
         .padding(16)
     }
+    
+    func image(forData data: Data?) -> Image {
+        Image(uiImage: data.flatMap(UIImage.init(data:)) ?? UIImage())
+    }
 }
 

@@ -13,11 +13,14 @@ struct AppState: Equatable {
     var allHeros: [Hero] = []
     var squadHeros: [Hero] = []
     var selectedHero: Hero?
+    var herosToImageData: [Hero:Data] = [:]
+    var comicsToImageData: [Comic:Data] = [:]
 }
 
 enum Status {
     case loading
     case idle
+    case didFailToLoadHeros
 }
 
 enum AppAction {
@@ -27,6 +30,7 @@ enum AppAction {
 }
 
 struct AppEnvironment {
+    let herosProvider: HerosProvider
 }
 
 extension AppState {
@@ -36,7 +40,8 @@ extension AppState {
                 status: status,
                 allHeros: allHeros,
                 squadHeros: squadHeros,
-                selectedHero: selectedHero
+                selectedHero: selectedHero,
+                herosToImageData: herosToImageData
             )
         }
         set {
@@ -44,6 +49,7 @@ extension AppState {
             allHeros = newValue.allHeros
             squadHeros = newValue.squadHeros
             selectedHero = newValue.selectedHero
+            herosToImageData = newValue.herosToImageData
         }
     }
 }
@@ -53,12 +59,16 @@ extension AppState {
         get {
             DetailsState(
                 squadHeros: squadHeros,
-                selectedHero: selectedHero
+                selectedHero: selectedHero,
+                herosToImageData: herosToImageData,
+                comicsToImageData: comicsToImageData
             )
         }
         set {
             squadHeros = newValue.squadHeros
             selectedHero = newValue.selectedHero
+            herosToImageData = newValue.herosToImageData
+            comicsToImageData = newValue.comicsToImageData
         }
     }
 }
@@ -78,12 +88,12 @@ let appReducer = Reducer<AppState, AppAction, AppEnvironment>.combine(
     rootReducer.pullback(
         state: \AppState.rootState,
         action: /AppAction.root,
-        environment: { $0 }
+        environment: { RootEnvironment(herosProvider: $0.herosProvider) }
     ),
     detailsReducer.pullback(
         state: \AppState.detailsState,
         action: /AppAction.details,
-        environment: { $0 }
+        environment: { DetailsEnvironment(herosProvider: $0.herosProvider) }
     ),
     flowReducer.pullback(
         state: \AppState.flowState,
@@ -103,25 +113,3 @@ extension Store where State == AppState, Action == AppAction {
         scope(state: { $0.flowState }, action: { .flow($0) })
     }
 }
-
-let testState = AppState(
-    status: .idle,
-    allHeros: [
-        Hero(name: "Name 1", biography: "Biography"),
-        Hero(name: "Name 2", biography: "Biography"),
-        Hero(name: "Name 3", biography: "Biography"),
-        Hero(name: "Name 4", biography: "Biography"),
-        Hero(name: "Name 5", biography: "Biography"),
-        Hero(name: "Name 6", biography: "Biography"),
-        Hero(name: "Name 7", biography: "Biography"),
-        Hero(name: "Name 8", biography: "Biography")
-    ],
-    squadHeros: [
-        Hero(name: "Name 1", biography: "Biography"),
-        Hero(name: "Name 2", biography: "Biography"),
-        Hero(name: "Name 3", biography: "Biography"),
-        Hero(name: "Name 4", biography: "Biography"),
-        Hero(name: "Name 5", biography: "Biography"),
-        Hero(name: "Name 6", biography: "Biography")
-    ]
-)

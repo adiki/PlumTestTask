@@ -35,6 +35,9 @@ struct RootView: View {
                 style: .large
             )
                 .eraseToAnyView()
+        case .didFailToLoadHeros:
+            resultView = Text(Strings.didFailToLoadHeros)
+                .eraseToAnyView()
         case .idle:
             resultView = List {
                 if viewStore.squadHeros.isNotEmpty {
@@ -44,14 +47,18 @@ struct RootView: View {
                             .fontWeight(.bold)
                             .foregroundColor(.white)
                             .padding([.leading, .trailing], 16)
+                            .padding(.top, 8)
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
                                 ForEach(viewStore.squadHeros, id: \.self) { hero in
-                                    HeroCell(hero: hero)
-                                        .padding([.trailing], 4)
-                                        .onTapGesture {
-                                            self.viewStore.send(.select(hero))
-                                        }
+                                    HeroCell(
+                                        hero: hero,
+                                        imageData: self.viewStore.state.herosToImageData[hero]
+                                    )
+                                    .padding([.trailing], 4)
+                                    .onTapGesture {
+                                        self.viewStore.send(.select(hero: hero))
+                                    }
                                 }
                             }
                             .padding([.leading, .trailing], 16)
@@ -63,15 +70,18 @@ struct RootView: View {
                     .padding([.bottom], 8)
                 }
                 ForEach(viewStore.allHeros, id: \.self) { hero in
-                    HeroRow(hero: hero)
-                        .onTapGesture {
-                            self.viewStore.send(.select(hero))
-                        }
+                    HeroRow(
+                        hero: hero,
+                        imageData: self.viewStore.state.herosToImageData[hero]
+                    )
+                    .onTapGesture {
+                        self.viewStore.send(.select(hero: hero))
+                    }
                 }
                 .listRowBackground(Color.background)
                 
             }
-            .padding([.top, .bottom], 8)
+            .padding(.top, 1)
             .eraseToAnyView()
         }
         return resultView
@@ -83,9 +93,9 @@ struct RootView_Previews: PreviewProvider {
     static var previews: some View {
         RootViewBuilder.makeRootView(
             store: Store(
-                initialState: testState,
+                initialState: AppState(),
                 reducer: appReducer,
-                environment: AppEnvironment()
+                environment: AppEnvironment(herosProvider: HerosNetworkProvider())
             )
         )
     }

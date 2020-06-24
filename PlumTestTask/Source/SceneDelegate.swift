@@ -22,21 +22,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Create the SwiftUI view that provides the window contents.
         let contentView = RootViewBuilder.makeRootView(
             store: Store(
-                initialState: AppState(
-                    status: .idle,
-                    allHeros: [
-                        Hero(name: "Name 1", biography: "Biography"),
-                        Hero(name: "Name 2", biography: "Biography"),
-                        Hero(name: "Name 3", biography: "Biography"),
-                        Hero(name: "Name 4", biography: "Biography"),
-                        Hero(name: "Name 5", biography: "Biography"),
-                        Hero(name: "Name 6", biography: "Biography"),
-                        Hero(name: "Name 7", biography: "Biography"),
-                        Hero(name: "Name 8", biography: "Biography")
-                    ]
-                ),
+                initialState: AppState(),
                 reducer: appReducer,
-                environment: AppEnvironment()
+                environment: AppEnvironment(herosProvider: HerosNetworkProvider())
             )
         )
 

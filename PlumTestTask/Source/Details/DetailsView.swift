@@ -15,6 +15,7 @@ struct DetailsView: View {
     
     init(viewStore: ViewStore<DetailsState, DetailsAction>) {
         self.viewStore = viewStore
+        viewStore.send(.fetchComicsImagesIfNeeded)
     }
     
     var body: some View {
@@ -26,7 +27,7 @@ struct DetailsView: View {
             GeometryReader { geometry in
                 ScrollView {
                     VStack(alignment: .leading) {
-                        Image(Images.marvelLogo)
+                        self.image(forData: self.viewStore.state.herosToImageData[hero])
                             .resizable()
                             .scaledToFill()
                             .frame(width: geometry.size.width,
@@ -47,27 +48,40 @@ struct DetailsView: View {
                         }
                         .frame(maxWidth: .infinity)
                         .style(for: hero, state: self.viewStore.state)
-                        Text(hero.biography)
+                        Text(hero.description)
                             .font(.subheadline)
                             .foregroundColor(.white)
-                            .padding([.leading], 16)
-                        Text(Strings.lastAppearedIn)
-                            .font(.headline)
-                            .fontWeight(.bold)
-                            .foregroundColor(.white)
-                            .padding(16)
-                        HStack {
-                            ComicCell()
+                            .padding([.leading, .bottom], 16)
+                        if hero.latestComic != nil {
+                            Text(Strings.lastAppearedIn)
+                                .font(.headline)
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .padding([.leading, .trailing], 16)
+                                .padding([.top, .bottom], 8)
+                            HStack(spacing: 16) {
+                                ComicCell(
+                                    comic: hero.latestComic!,
+                                    imageData: self.viewStore.comicsToImageData[hero.latestComic!]
+                                )
                                 .frame(minWidth: 0, maxWidth: .infinity)
-                            ComicCell()
+                                if hero.comicJustBeforeLatest != nil {
+                                    ComicCell(
+                                        comic: hero.comicJustBeforeLatest!,
+                                        imageData: self.viewStore.comicsToImageData[hero.comicJustBeforeLatest!]
+                                    )
+                                    .frame(minWidth: 0, maxWidth: .infinity)
+                                }
+                            }
+                            .padding([.leading, .trailing], 16)
+                        }
+                        if hero.comics.available > 2 {
+                            Text(Strings.andOtherComic(number: hero.comics.available - 2))
+                                .font(.headline)
+                                .foregroundColor(.white)
+                                .padding(32)
                                 .frame(minWidth: 0, maxWidth: .infinity)
                         }
-                        .padding([.leading, .trailing], 16)
-                        Text(Strings.andOtherComic(number: 2))
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .padding(32)
-                            .frame(minWidth: 0, maxWidth: .infinity)
                     }
                 }
             }
@@ -105,9 +119,9 @@ struct DetailsView_Previews: PreviewProvider {
                 Color.background.edgesIgnoringSafeArea(.all)
                 DetailsView(
                     viewStore: Store(
-                        initialState: testState,
+                        initialState: AppState(),
                         reducer: appReducer,
-                        environment: AppEnvironment()
+                        environment: AppEnvironment(herosProvider: HerosNetworkProvider())
                     ).detailStore.view
                 )
             }
