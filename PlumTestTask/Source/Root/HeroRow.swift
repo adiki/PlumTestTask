@@ -6,39 +6,42 @@
 //  Copyright © 2020 sliwa.adrian. All rights reserved.
 //
 
+import ComposableArchitecture
 import SwiftUI
 
 struct HeroRow: View {
     private let hero: Hero
-    private let imageData: Data?
+    @ObservedObject
+    private var viewStore: ViewStore<RootState, RootAction>
     
-    init(hero: Hero, imageData: Data?) {
+    init(hero: Hero, viewStore: ViewStore<RootState, RootAction>) {
         self.hero = hero
-        self.imageData = imageData
+        self.viewStore = viewStore
     }
     
     var body: some View {
-        HStack {
-            image(forData: imageData)
-                .resizable()            
-                .scaledToFill()
-                .foregroundColor(.white)
-                .clipShape(Circle())
-                .frame(width: 44, height: 44)                
-            Text(hero.name)
-                .font(.headline)
-                .fontWeight(.bold)
-                .foregroundColor(.white)
-                .lineLimit(1)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(8)
-                .padding(.trailing, 16)
-            Image(systemName: "chevron.right")
-                .foregroundColor(Color.white.opacity(0.2))                
+        Button(action: { [viewStore, hero] in viewStore.send(.select(hero: hero)) }) {
+            HStack {
+                image(forData: self.viewStore.herosToImageData[hero])
+                    .renderingMode(.original)
+                    .resizable()
+                    .scaledToFill()
+                    .foregroundColor(.white)
+                    .clipShape(Circle())
+                    .frame(width: 44, height: 44)
+                Text(hero.name)
+                    .font(.headline)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .lineLimit(1)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(8)
+                    .padding(.trailing, 16)
+                Image(systemName: "chevron.right")
+                    .foregroundColor(Color.white.opacity(0.2))
+            }
         }
-        .padding(16)
+        .buttonStyle(HighlightButtonStyle(color: Color.rowColor))
         .frame(maxWidth: .infinity, minHeight: 76, alignment: .leading)
-        .background(Color.rowColor)        
-        .cornerRadius(8)
     }
 }

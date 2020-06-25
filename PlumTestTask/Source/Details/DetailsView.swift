@@ -27,7 +27,7 @@ struct DetailsView: View {
             GeometryReader { geometry in
                 ScrollView {
                     VStack(alignment: .leading) {
-                        self.image(forData: self.viewStore.state.herosToImageData[hero])
+                        self.image(forData: self.viewStore.herosToImageData[hero])
                             .resizable()
                             .scaledToFill()
                             .frame(width: geometry.size.width,

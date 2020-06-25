@@ -12,6 +12,7 @@ import SwiftUI
 enum RootViewBuilder {
     static func makeRootView(store: Store<AppState, AppAction>) -> some View {
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        UINavigationBar.appearance().shadowImage = UIImage()
         let flowDecorator: (AnyView) -> AnyView = { view in
             GeometryReader { geometry in
                 NavigationView {
@@ -36,6 +37,7 @@ enum RootViewBuilder {
                         .hidden()
                     }
                 }
+                .accentColor( .white)
             }
             .eraseToAnyView()
         }

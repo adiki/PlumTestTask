@@ -51,14 +51,13 @@ struct RootView: View {
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
                                 ForEach(viewStore.squadHeros, id: \.self) { hero in
-                                    HeroCell(
-                                        hero: hero,
-                                        imageData: self.viewStore.state.herosToImageData[hero]
-                                    )
-                                    .padding([.trailing], 4)
-                                    .onTapGesture {
-                                        self.viewStore.send(.select(hero: hero))
+                                    Button(action: { self.viewStore.send(.select(hero: hero)) }) {
+                                        HeroCell(
+                                            hero: hero,
+                                            imageData: self.viewStore.herosToImageData[hero]
+                                        )
                                     }
+                                    .padding([.trailing], 4)
                                 }
                             }
                             .padding([.leading, .trailing], 16)
@@ -72,14 +71,10 @@ struct RootView: View {
                 ForEach(viewStore.allHeros, id: \.self) { hero in
                     HeroRow(
                         hero: hero,
-                        imageData: self.viewStore.state.herosToImageData[hero]
+                        viewStore: self.viewStore
                     )
-                    .onTapGesture {
-                        self.viewStore.send(.select(hero: hero))
-                    }
                 }
                 .listRowBackground(Color.background)
-                
             }
             .padding(.top, 1)
             .eraseToAnyView()
