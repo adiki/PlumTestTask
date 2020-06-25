@@ -13,6 +13,7 @@ struct AppState: Equatable {
     var allHeros: [Hero] = []
     var squadHeros: [Hero] = []
     var selectedHero: Hero?
+    var isFiringHeroConfirmationPresented = false
     var herosToImageData: [Hero:Data] = [:]
     var comicsToImageData: [Comic:Data] = [:]
 }
@@ -60,6 +61,7 @@ extension AppState {
             DetailsState(
                 squadHeros: squadHeros,
                 selectedHero: selectedHero,
+                isFiringHeroConfirmationPresented: isFiringHeroConfirmationPresented,
                 herosToImageData: herosToImageData,
                 comicsToImageData: comicsToImageData
             )
@@ -67,6 +69,7 @@ extension AppState {
         set {
             squadHeros = newValue.squadHeros
             selectedHero = newValue.selectedHero
+            isFiringHeroConfirmationPresented = newValue.isFiringHeroConfirmationPresented
             herosToImageData = newValue.herosToImageData
             comicsToImageData = newValue.comicsToImageData
         }

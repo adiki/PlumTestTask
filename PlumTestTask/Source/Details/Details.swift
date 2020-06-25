@@ -12,6 +12,7 @@ import ComposableArchitecture
 struct DetailsState: Equatable {
     var squadHeros: [Hero]
     let selectedHero: Hero?
+    var isFiringHeroConfirmationPresented: Bool
     let herosToImageData: [Hero:Data]
     var comicsToImageData: [Comic:Data] = [:]
     
@@ -25,6 +26,8 @@ enum DetailsAction {
     case didFetchImageData(Data, comic: Comic)
     case didFailToFetchComicImageData
     case recruitOrFireButtonTapped(Hero)
+    case fire(Hero)
+    case fireConfirmationAlertDismissed
 }
 
 struct DetailsEnvironment {
@@ -54,10 +57,17 @@ let detailsReducer = Reducer<DetailsState, DetailsAction, DetailsEnvironment> { 
         return .none
     case .recruitOrFireButtonTapped(let hero):
         if state.doesSquadContain(hero: hero) {
-            state.squadHeros.removeAll(where: { $0 == hero })
+            state.isFiringHeroConfirmationPresented = true
         } else {
             state.squadHeros.insert(hero, at: 0)
         }
         return .none
+    case .fire(let hero):
+        state.squadHeros.removeAll(where: { $0 == hero })
+        return .none
+    case .fireConfirmationAlertDismissed:
+        state.isFiringHeroConfirmationPresented = false
+        return .none
+        
     }
 }

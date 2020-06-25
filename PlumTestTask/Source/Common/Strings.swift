@@ -14,7 +14,11 @@ enum Strings {
     static let fireFromSquad = "🔥 Fire from Squad"
     static let lastAppearedIn = "Last appeared in"
     static let didFailToLoadHeros = "Did fail to load heros"
-    
+    static let delete = "Delete"
+    static let cancel = "Cancel"
+    static func doYouWantToFire(name: String) -> String {
+        "Do you want to fire \(name)?"
+    }
     static func andOtherComic(number: Int) -> String {
         "and \(number) other comic\(number > 1 ? "s" : "")"
     }

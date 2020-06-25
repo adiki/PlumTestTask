@@ -86,7 +86,19 @@ struct DetailsView: View {
                 }
             }
         }
-        .edgesIgnoringSafeArea([.top])
+        .edgesIgnoringSafeArea([.top])    
+        .alert(isPresented: self.viewStore.binding(
+            get: { $0.isFiringHeroConfirmationPresented },
+            send: .fireConfirmationAlertDismissed
+        )) {
+             Alert(
+                title: Text(Strings.doYouWantToFire(name: hero.name)),
+                primaryButton: .destructive(Text(Strings.delete)) {
+                    self.viewStore.send(.fire(hero))
+                },
+                secondaryButton: .cancel(Text(Strings.cancel))
+            )
+        }
         .eraseToAnyView()
     }
 }
