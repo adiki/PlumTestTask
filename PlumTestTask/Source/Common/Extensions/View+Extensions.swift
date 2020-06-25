@@ -34,8 +34,10 @@ extension View {
     func image(forData data: Data?) -> Image {
         data
             .flatMap(UIImage.init(data:))
-            .map(Image.init(uiImage:))?.renderingMode(.original)
-            ?? Image(systemName: "circle.fill")
+            .map(
+                Image.init(uiImage:)
+            )?.renderingMode(.original)
+            ?? Image(systemName: "square.fill")
     }
 }
 

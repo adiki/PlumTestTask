@@ -64,13 +64,13 @@ struct DetailsView: View {
                                     comic: hero.latestComic!,
                                     imageData: self.viewStore.comicsToImageData[hero.latestComic!]
                                 )
-                                .frame(minWidth: 0, maxWidth: .infinity)
+                                .frame(width: geometry.size.width / 2 - 24)
                                 if hero.comicJustBeforeLatest != nil {
                                     ComicCell(
                                         comic: hero.comicJustBeforeLatest!,
                                         imageData: self.viewStore.comicsToImageData[hero.comicJustBeforeLatest!]
                                     )
-                                    .frame(minWidth: 0, maxWidth: .infinity)
+                                    .frame(width: geometry.size.width / 2 - 24)
                                 }
                             }
                             .padding([.leading, .trailing], 16)
