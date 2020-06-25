@@ -10,8 +10,7 @@ import ComposableArchitecture
 import SwiftUI
 
 struct DetailsView: View {
-    @ObservedObject
-    private var viewStore: ViewStore<DetailsState, DetailsAction>
+    @ObservedObject private var viewStore: ViewStore<DetailsState, DetailsAction>
     
     init(viewStore: ViewStore<DetailsState, DetailsAction>) {
         self.viewStore = viewStore
@@ -126,7 +125,6 @@ extension View {
         }
     }
 }
-
 
 struct DetailsView_Previews: PreviewProvider {
     static var previews: some View {

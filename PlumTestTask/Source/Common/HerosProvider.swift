@@ -17,6 +17,7 @@ protocol HerosProvider {
 
 enum ProviderError: Error {
     case invalidURL
+    case invalidComicDetailsResponse
     case networkError(URLError)
 }
 
@@ -26,7 +27,6 @@ enum ImageSize: String {
 }
 
 struct HerosNetworkProvider: HerosProvider {
-    
     func fetchHeros() -> AnyPublisher<[Hero], Error> {
         guard let authenticatedURL = authenticatedURL(
             forPath: "https://gateway.marvel.com/v1/public/characters",
@@ -66,7 +66,12 @@ struct HerosNetworkProvider: HerosProvider {
         return URLSession.shared.dataTaskPublisher(for: authenticatedURL)
             .map { $0.data }
             .decode(type: ComicDetailsResponse.self, decoder: JSONDecoder())
-            .map { $0.data.results[0] }
+            .tryMap {
+                guard let comicDetails = $0.data.results.first else {
+                    throw ProviderError.invalidComicDetailsResponse
+                }
+                return comicDetails
+            }
             .eraseToAnyPublisher()
     }
     

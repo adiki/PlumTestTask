@@ -9,7 +9,6 @@
 import SwiftUI
 
 struct ComicCell: View {
-    
     private let comic: Comic
     private let imageData: Data?
     

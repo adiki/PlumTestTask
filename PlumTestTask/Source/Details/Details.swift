@@ -65,7 +65,6 @@ let detailsReducer = Reducer<DetailsState, DetailsAction, DetailsEnvironment> { 
         } else {
             state.squadHeros.insert(hero, at: 0)
             return environment.persistency.save(heros: state.squadHeros)
-                
         }
     case .fire(let hero):
         state.squadHeros.removeAll(where: { $0 == hero })

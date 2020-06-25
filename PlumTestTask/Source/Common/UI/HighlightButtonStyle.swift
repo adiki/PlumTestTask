@@ -9,7 +9,6 @@
 import SwiftUI
 
 struct HighlightButtonStyle: ButtonStyle {
-    
     private let color: Color
     
     init(color: Color) {

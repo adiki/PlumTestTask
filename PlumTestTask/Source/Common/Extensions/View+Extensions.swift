@@ -20,7 +20,7 @@ extension View {
     func filled() -> some View {
         background(Color.appRed)
             .cornerRadius(8)
-            .padding(16)
+            .padding(Insets.standard)
     }
     
     func bordered() -> some View {

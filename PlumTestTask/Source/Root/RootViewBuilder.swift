@@ -37,7 +37,7 @@ enum RootViewBuilder {
                         .hidden()
                     }
                 }
-                .accentColor( .white)
+                .accentColor(.white)
             }
             .eraseToAnyView()
         }

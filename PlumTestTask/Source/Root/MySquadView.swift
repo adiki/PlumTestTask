@@ -11,7 +11,6 @@ import ComposableArchitecture
 import SwiftUI
 
 struct MySquadView: View {
-    
     @ObservedObject private var viewStore: ViewStore<RootState, RootAction>
     
     init(viewStore: ViewStore<RootState, RootAction>) {

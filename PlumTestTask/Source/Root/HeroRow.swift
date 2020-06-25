@@ -11,8 +11,7 @@ import SwiftUI
 
 struct HeroRow: View {
     private let hero: Hero
-    @ObservedObject
-    private var viewStore: ViewStore<RootState, RootAction>
+    @ObservedObject private var viewStore: ViewStore<RootState, RootAction>
     
     init(hero: Hero, viewStore: ViewStore<RootState, RootAction>) {
         self.hero = hero
