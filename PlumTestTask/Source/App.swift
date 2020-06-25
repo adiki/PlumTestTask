@@ -91,6 +91,7 @@ let appReducer = Reducer<AppState, AppAction, AppEnvironment>.combine(
         action: /AppAction.root,
         environment: {
             RootEnvironment(
+                mainQueue: $0.mainQueue,
                 herosProvider: $0.herosProvider,
                 persistency: $0.persistency
             )

@@ -17,7 +17,7 @@ struct RootState: Equatable {
     var herosToImageData: [Hero:Data] = [:]
 }
 
-enum RootAction {
+enum RootAction: Equatable {
     case initialize
     case didFailToLoadSquadHeros
     case didLoadSqauadHeros([Hero])
@@ -29,6 +29,7 @@ enum RootAction {
 }
 
 struct RootEnvironment {
+    let mainQueue: AnySchedulerOf<DispatchQueue>
     let herosProvider: HerosProvider
     let persistency: Persistency
 }
@@ -46,7 +47,7 @@ let rootReducer = Reducer<RootState, RootAction, RootEnvironment> { state, actio
             .replaceError(with: RootAction.didFailToFetchHeros)
             .eraseToEffect()
         return Publishers.Merge(loadMySquad, fetchHeros)
-            .receive(on: DispatchQueue.main)
+            .receive(on: environment.mainQueue)
             .eraseToEffect()
     case .didFailToLoadSquadHeros:
         return .none
@@ -62,7 +63,7 @@ let rootReducer = Reducer<RootState, RootAction, RootEnvironment> { state, actio
         return Publishers.MergeMany(heros.map { environment.herosProvider.imageData(forHero: $0) })
             .map { RootAction.didFetchImageData($0.data, hero: $0.hero) }
             .replaceError(with: .didFailToFetchHeroImageData)
-            .receive(on: DispatchQueue.main)
+            .receive(on: environment.mainQueue)
             .eraseToEffect()
     case let .didFetchImageData(imageData, hero):
         state.herosToImageData[hero] = imageData

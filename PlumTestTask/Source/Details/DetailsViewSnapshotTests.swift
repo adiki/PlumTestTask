@@ -129,9 +129,3 @@ class DetailViewSnapshotTests: XCTestCase {
         )
     }
 }
-
-extension Comic {
-    static func fixture(number: Int) -> Comic {
-        return Comic(name: "Comic #\(number)", resourceURI: "")
-    }
-}

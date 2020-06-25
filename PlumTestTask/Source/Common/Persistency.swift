@@ -37,16 +37,3 @@ struct FilePersistency: Persistency {
         return documentsUrl.appendingPathComponent(name)
     }
 }
-
-struct PersistencyMock: Persistency {
-    var loadMock: (String) -> Effect<Data, Error> = { _ in Empty().eraseToEffect() }
-    var saveMock: (Data, String) -> Effect<Never, Error> = { _, _ in Empty().eraseToEffect() }
-    
-    func load(forName name: String) -> Effect<Data, Error> {
-        return loadMock(name)
-    }
-    
-    func save(data: Data, forName name: String) -> Effect<Never, Error> {
-        return saveMock(data, name)
-    }
-}

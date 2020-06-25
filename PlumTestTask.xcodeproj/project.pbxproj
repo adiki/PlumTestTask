@@ -50,6 +50,9 @@
 		2CE7B24624A4C9FA006D1E87 /* Hero+Fixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7B24524A4C9FA006D1E87 /* Hero+Fixture.swift */; };
 		2CE7B24724A4CA41006D1E87 /* DetailsViewSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7B24324A4C9D9006D1E87 /* DetailsViewSnapshotTests.swift */; };
 		2CE7B24A24A4D56C006D1E87 /* DetailsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7B24824A4D568006D1E87 /* DetailsTests.swift */; };
+		2CE7B24C24A4E78D006D1E87 /* HerosProvider+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7B24B24A4E78D006D1E87 /* HerosProvider+Mock.swift */; };
+		2CE7B24F24A4E7EE006D1E87 /* Persistency+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7B24D24A4E7C3006D1E87 /* Persistency+Mock.swift */; };
+		2CE7B25224A4EA3E006D1E87 /* Comic+Fixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7B25024A4EA3B006D1E87 /* Comic+Fixture.swift */; };
 		2CEA006124A12A8900A2A857 /* DarkHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEA006024A12A8900A2A857 /* DarkHostingController.swift */; };
 /* End PBXBuildFile section */
 
@@ -118,6 +121,9 @@
 		2CE7B24324A4C9D9006D1E87 /* DetailsViewSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewSnapshotTests.swift; sourceTree = "<group>"; };
 		2CE7B24524A4C9FA006D1E87 /* Hero+Fixture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Hero+Fixture.swift"; sourceTree = "<group>"; };
 		2CE7B24824A4D568006D1E87 /* DetailsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTests.swift; sourceTree = "<group>"; };
+		2CE7B24B24A4E78D006D1E87 /* HerosProvider+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HerosProvider+Mock.swift"; sourceTree = "<group>"; };
+		2CE7B24D24A4E7C3006D1E87 /* Persistency+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Persistency+Mock.swift"; sourceTree = "<group>"; };
+		2CE7B25024A4EA3B006D1E87 /* Comic+Fixture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comic+Fixture.swift"; sourceTree = "<group>"; };
 		2CEA006024A12A8900A2A857 /* DarkHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkHostingController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -281,8 +287,10 @@
 				2C98833524A10D92003D2595 /* Model */,
 				2C179BF824A4AA2B006BB53C /* UI */,
 				2CBAAB9B24A3AFC900032EA5 /* HerosProvider.swift */,
+				2CE7B24B24A4E78D006D1E87 /* HerosProvider+Mock.swift */,
 				2CBAAB9D24A3B0D200032EA5 /* MD5.swift */,
 				2C179BF224A49C9E006BB53C /* Persistency.swift */,
+				2CE7B24D24A4E7C3006D1E87 /* Persistency+Mock.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -298,6 +306,7 @@
 				2CBAABAD24A3D67500032EA5 /* ComicDetails.swift */,
 				2CBAABA924A3C45400032EA5 /* Thumbnail.swift */,
 				2CE7B24524A4C9FA006D1E87 /* Hero+Fixture.swift */,
+				2CE7B25024A4EA3B006D1E87 /* Comic+Fixture.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -496,11 +505,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CE7B24224A4C660006D1E87 /* Data+Extensions.swift in Sources */,
+				2CE7B24C24A4E78D006D1E87 /* HerosProvider+Mock.swift in Sources */,
 				2CE7B24724A4CA41006D1E87 /* DetailsViewSnapshotTests.swift in Sources */,
 				2CE7B24624A4C9FA006D1E87 /* Hero+Fixture.swift in Sources */,
 				2CE7B23E24A4BF73006D1E87 /* RootViewSnapshotTests.swift in Sources */,
 				2CE7B24A24A4D56C006D1E87 /* DetailsTests.swift in Sources */,
 				2C98832C24A0F32E003D2595 /* RootTests.swift in Sources */,
+				2CE7B24F24A4E7EE006D1E87 /* Persistency+Mock.swift in Sources */,
+				2CE7B25224A4EA3E006D1E87 /* Comic+Fixture.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
