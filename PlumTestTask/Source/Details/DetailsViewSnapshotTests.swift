@@ -12,7 +12,6 @@ import ComposableArchitecture
 @testable import PlumTestTask
 
 class DetailViewSnapshotTests: XCTestCase {
-    
     private let comic1 = Comic.fixture(number: 1)
     private let comic2 = Comic.fixture(number: 2)
     private let comic3 = Comic.fixture(number: 3)
@@ -115,6 +114,7 @@ class DetailViewSnapshotTests: XCTestCase {
             initialState: state,
             reducer: Reducer<AppState, AppAction, AppEnvironment>.empty,
             environment: AppEnvironment(
+                mainQueue: DispatchQueue.testScheduler.eraseToAnyScheduler(),
                 herosProvider: HerosProviderMock(),
                 persistency: PersistencyMock()
             )

@@ -31,6 +31,7 @@ enum AppAction {
 }
 
 struct AppEnvironment {
+    let mainQueue: AnySchedulerOf<DispatchQueue>
     let herosProvider: HerosProvider
     let persistency: Persistency
 }
@@ -100,6 +101,7 @@ let appReducer = Reducer<AppState, AppAction, AppEnvironment>.combine(
         action: /AppAction.details,
         environment: {
             DetailsEnvironment(
+                mainQueue: $0.mainQueue,
                 herosProvider: $0.herosProvider,
                 persistency: $0.persistency
             )

@@ -77,6 +77,7 @@ struct RootView_Previews: PreviewProvider {
                 initialState: AppState(),
                 reducer: appReducer,
                 environment: AppEnvironment(
+                    mainQueue: DispatchQueue.main.eraseToAnyScheduler(),
                     herosProvider: HerosNetworkProvider(),
                     persistency: FilePersistency()
                 )

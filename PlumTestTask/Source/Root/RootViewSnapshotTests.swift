@@ -67,6 +67,7 @@ class RootViewSnapshotTests: XCTestCase {
             initialState: state,
             reducer: Reducer<AppState, AppAction, AppEnvironment>.empty,
             environment: AppEnvironment(
+                mainQueue: DispatchQueue.testScheduler.eraseToAnyScheduler(),
                 herosProvider: HerosProviderMock(),
                 persistency: PersistencyMock()
             )

@@ -49,6 +49,7 @@
 		2CE7B24224A4C660006D1E87 /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7B24124A4C660006D1E87 /* Data+Extensions.swift */; };
 		2CE7B24624A4C9FA006D1E87 /* Hero+Fixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7B24524A4C9FA006D1E87 /* Hero+Fixture.swift */; };
 		2CE7B24724A4CA41006D1E87 /* DetailsViewSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7B24324A4C9D9006D1E87 /* DetailsViewSnapshotTests.swift */; };
+		2CE7B24A24A4D56C006D1E87 /* DetailsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7B24824A4D568006D1E87 /* DetailsTests.swift */; };
 		2CEA006124A12A8900A2A857 /* DarkHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEA006024A12A8900A2A857 /* DarkHostingController.swift */; };
 /* End PBXBuildFile section */
 
@@ -116,6 +117,7 @@
 		2CE7B24124A4C660006D1E87 /* Data+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
 		2CE7B24324A4C9D9006D1E87 /* DetailsViewSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewSnapshotTests.swift; sourceTree = "<group>"; };
 		2CE7B24524A4C9FA006D1E87 /* Hero+Fixture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Hero+Fixture.swift"; sourceTree = "<group>"; };
+		2CE7B24824A4D568006D1E87 /* DetailsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTests.swift; sourceTree = "<group>"; };
 		2CEA006024A12A8900A2A857 /* DarkHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkHostingController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -224,13 +226,13 @@
 			isa = PBXGroup;
 			children = (
 				2CE1555424A28C3000C018DE /* Root.swift */,
+				2C98832A24A0F2BC003D2595 /* RootTests.swift */,
 				2C98831C24A0D534003D2595 /* RootViewBuilder.swift */,
 				2C98831E24A0D5A0003D2595 /* RootView.swift */,
 				2CE7B23C24A4BF12006D1E87 /* RootViewSnapshotTests.swift */,
 				2C179BF624A4A946006BB53C /* MySquadView.swift */,
 				2C98833824A11497003D2595 /* HeroRow.swift */,
 				2CE1554724A130C600C018DE /* HeroCell.swift */,
-				2C98832A24A0F2BC003D2595 /* RootTests.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -304,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				2CE1555224A28C2600C018DE /* Details.swift */,
+				2CE7B24824A4D568006D1E87 /* DetailsTests.swift */,
 				2CE1554A24A1E20C00C018DE /* DetailsView.swift */,
 				2CE7B24324A4C9D9006D1E87 /* DetailsViewSnapshotTests.swift */,
 				2CE1554C24A1F50700C018DE /* ComicCell.swift */,
@@ -496,6 +499,7 @@
 				2CE7B24724A4CA41006D1E87 /* DetailsViewSnapshotTests.swift in Sources */,
 				2CE7B24624A4C9FA006D1E87 /* Hero+Fixture.swift in Sources */,
 				2CE7B23E24A4BF73006D1E87 /* RootViewSnapshotTests.swift in Sources */,
+				2CE7B24A24A4D56C006D1E87 /* DetailsTests.swift in Sources */,
 				2C98832C24A0F32E003D2595 /* RootTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

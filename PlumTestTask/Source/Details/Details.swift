@@ -21,17 +21,18 @@ struct DetailsState: Equatable {
     }
 }
 
-enum DetailsAction {
+enum DetailsAction: Equatable {
     case fetchComicsImagesIfNeeded
     case didFetchImageData(Data, comic: Comic)
     case didFailToFetchComicImageData
     case recruitOrFireButtonTapped(Hero)
     case fire(Hero)
     case fireConfirmationAlertDismissed
-    case didFailToSaveHeros(Error)
+    case didFailToSaveHeros
 }
 
 struct DetailsEnvironment {
+    let mainQueue: AnySchedulerOf<DispatchQueue>
     let herosProvider: HerosProvider
     let persistency: Persistency
 }
@@ -50,7 +51,7 @@ let detailsReducer = Reducer<DetailsState, DetailsAction, DetailsEnvironment> { 
         return Publishers.MergeMany(comicsWithoutImageData.map { environment.herosProvider.imageData(forComic: $0) })
             .map { DetailsAction.didFetchImageData($0.data, comic: $0.comic) }
             .replaceError(with: .didFailToFetchComicImageData)
-            .receive(on: DispatchQueue.main)
+            .receive(on: environment.mainQueue)
             .eraseToEffect()
     case let .didFetchImageData(imageData, comic):
         state.comicsToImageData[comic] = imageData
@@ -84,7 +85,7 @@ extension Persistency {
             forName: Strings.squadHerosFilename
         )
         .promoteValue()
-        .catch { Just(DetailsAction.didFailToSaveHeros($0)) }
+        .catch { _ in Just(DetailsAction.didFailToSaveHeros) }
         .eraseToEffect()
     }
 }
