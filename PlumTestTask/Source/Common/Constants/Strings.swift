@@ -22,4 +22,6 @@ enum Strings {
     static func andOtherComic(number: Int) -> String {
         "and \(number) other comic\(number > 1 ? "s" : "")"
     }
+    
+    static let squadHerosFilename: String = "squad-heros.json"
 }

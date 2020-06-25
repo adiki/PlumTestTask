@@ -24,7 +24,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             store: Store(
                 initialState: AppState(),
                 reducer: appReducer,
-                environment: AppEnvironment(herosProvider: HerosNetworkProvider())
+                environment: AppEnvironment(
+                    herosProvider: HerosNetworkProvider(),
+                    persistency: FilePersistency()
+                )
             )
         )
 

@@ -13,6 +13,9 @@
 		2C0DDF68249BF83B007DC237 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C0DDF67249BF83B007DC237 /* Preview Assets.xcassets */; };
 		2C0DDF6B249BF83B007DC237 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C0DDF69249BF83B007DC237 /* LaunchScreen.storyboard */; };
 		2C179BF124A49293006BB53C /* HighlightButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C179BF024A49293006BB53C /* HighlightButtonStyle.swift */; };
+		2C179BF324A49C9E006BB53C /* Persistency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C179BF224A49C9E006BB53C /* Persistency.swift */; };
+		2C179BF524A4A340006BB53C /* Effect+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C179BF424A4A340006BB53C /* Effect+Extensions.swift */; };
+		2C179BF724A4A946006BB53C /* MySquadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C179BF624A4A946006BB53C /* MySquadView.swift */; };
 		2C98831D24A0D534003D2595 /* RootViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C98831C24A0D534003D2595 /* RootViewBuilder.swift */; };
 		2C98831F24A0D5A0003D2595 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C98831E24A0D5A0003D2595 /* RootView.swift */; };
 		2C98832324A0D69F003D2595 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C98832224A0D69F003D2595 /* View+Extensions.swift */; };
@@ -74,6 +77,9 @@
 		2C0DDF7C249BF83B007DC237 /* PlumTestTaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlumTestTaskUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C0DDF82249BF83B007DC237 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C179BF024A49293006BB53C /* HighlightButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightButtonStyle.swift; sourceTree = "<group>"; };
+		2C179BF224A49C9E006BB53C /* Persistency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistency.swift; sourceTree = "<group>"; };
+		2C179BF424A4A340006BB53C /* Effect+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Effect+Extensions.swift"; sourceTree = "<group>"; };
+		2C179BF624A4A946006BB53C /* MySquadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySquadView.swift; sourceTree = "<group>"; };
 		2C98831C24A0D534003D2595 /* RootViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewBuilder.swift; sourceTree = "<group>"; };
 		2C98831E24A0D5A0003D2595 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		2C98832224A0D69F003D2595 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
@@ -185,12 +191,32 @@
 			path = PlumTestTaskUITests;
 			sourceTree = "<group>";
 		};
+		2C179BF824A4AA2B006BB53C /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				2C98833324A0FCA2003D2595 /* ActivityIndicator.swift */,
+				2CEA006024A12A8900A2A857 /* DarkHostingController.swift */,
+				2C179BF024A49293006BB53C /* HighlightButtonStyle.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		2C179BF924A4AA3C006BB53C /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				2C98832524A0DCA5003D2595 /* Images.swift */,
+				2CE1555024A20DF100C018DE /* Strings.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		2C98831A24A0D48E003D2595 /* Root */ = {
 			isa = PBXGroup;
 			children = (
 				2CE1555424A28C3000C018DE /* Root.swift */,
 				2C98831C24A0D534003D2595 /* RootViewBuilder.swift */,
 				2C98831E24A0D5A0003D2595 /* RootView.swift */,
+				2C179BF624A4A946006BB53C /* MySquadView.swift */,
 				2C98833824A11497003D2595 /* HeroRow.swift */,
 				2CE1554724A130C600C018DE /* HeroCell.swift */,
 				2C98832A24A0F2BC003D2595 /* RootTests.swift */,
@@ -212,6 +238,7 @@
 			children = (
 				2CE1554524A12BE000C018DE /* Collections+Extensions.swift */,
 				2C98833A24A11924003D2595 /* Color+Extensions.swift */,
+				2C179BF424A4A340006BB53C /* Effect+Extensions.swift */,
 				2C98832F24A0F77A003D2595 /* Store+Extensions.swift */,
 				2C98832224A0D69F003D2595 /* View+Extensions.swift */,
 			);
@@ -226,8 +253,6 @@
 				2C98832D24A0F65E003D2595 /* App.swift */,
 				2CE1555624A35E9300C018DE /* Flow.swift */,
 				2C98832424A0DC98003D2595 /* Common */,
-				2C98832024A0D672003D2595 /* Extensions */,
-				2C98833524A10D92003D2595 /* Model */,
 				2C98831A24A0D48E003D2595 /* Root */,
 				2CE1554924A13FD400C018DE /* Details */,
 			);
@@ -237,13 +262,13 @@
 		2C98832424A0DC98003D2595 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				2C98833324A0FCA2003D2595 /* ActivityIndicator.swift */,
-				2CEA006024A12A8900A2A857 /* DarkHostingController.swift */,
+				2C179BF924A4AA3C006BB53C /* Constants */,
+				2C98832024A0D672003D2595 /* Extensions */,
+				2C98833524A10D92003D2595 /* Model */,
+				2C179BF824A4AA2B006BB53C /* UI */,
 				2CBAAB9B24A3AFC900032EA5 /* HerosProvider.swift */,
-				2C179BF024A49293006BB53C /* HighlightButtonStyle.swift */,
-				2C98832524A0DCA5003D2595 /* Images.swift */,
 				2CBAAB9D24A3B0D200032EA5 /* MD5.swift */,
-				2CE1555024A20DF100C018DE /* Strings.swift */,
+				2C179BF224A49C9E006BB53C /* Persistency.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -412,6 +437,7 @@
 				2C179BF124A49293006BB53C /* HighlightButtonStyle.swift in Sources */,
 				2CE1555724A35E9300C018DE /* Flow.swift in Sources */,
 				2CE1554824A130C600C018DE /* HeroCell.swift in Sources */,
+				2C179BF724A4A946006BB53C /* MySquadView.swift in Sources */,
 				2C98831F24A0D5A0003D2595 /* RootView.swift in Sources */,
 				2CE1554D24A1F50700C018DE /* ComicCell.swift in Sources */,
 				2CBAABAC24A3D65100032EA5 /* ComicResponse.swift in Sources */,
@@ -428,12 +454,14 @@
 				2CE1555124A20DF100C018DE /* Strings.swift in Sources */,
 				2CBAAB9C24A3AFC900032EA5 /* HerosProvider.swift in Sources */,
 				2CBAABA224A3B99200032EA5 /* Comics.swift in Sources */,
+				2C179BF324A49C9E006BB53C /* Persistency.swift in Sources */,
 				2CBAAB9E24A3B0D200032EA5 /* MD5.swift in Sources */,
 				2C98833424A0FCA2003D2595 /* ActivityIndicator.swift in Sources */,
 				2CE1554624A12BE000C018DE /* Collections+Extensions.swift in Sources */,
 				2CBAABA024A3B29F00032EA5 /* HeroResponse.swift in Sources */,
 				2C98831D24A0D534003D2595 /* RootViewBuilder.swift in Sources */,
 				2CEA006124A12A8900A2A857 /* DarkHostingController.swift in Sources */,
+				2C179BF524A4A340006BB53C /* Effect+Extensions.swift in Sources */,
 				2CBAABAA24A3C45400032EA5 /* Thumbnail.swift in Sources */,
 				2CE1554B24A1E20C00C018DE /* DetailsView.swift in Sources */,
 				2C98833924A11497003D2595 /* HeroRow.swift in Sources */,

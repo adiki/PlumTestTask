@@ -133,7 +133,10 @@ struct DetailsView_Previews: PreviewProvider {
                     viewStore: Store(
                         initialState: AppState(),
                         reducer: appReducer,
-                        environment: AppEnvironment(herosProvider: HerosNetworkProvider())
+                        environment: AppEnvironment(
+                            herosProvider: HerosNetworkProvider(),
+                            persistency: FilePersistency()
+                        )
                     ).detailStore.view
                 )
             }

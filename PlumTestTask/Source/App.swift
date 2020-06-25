@@ -32,6 +32,7 @@ enum AppAction {
 
 struct AppEnvironment {
     let herosProvider: HerosProvider
+    let persistency: Persistency
 }
 
 extension AppState {
@@ -78,12 +79,8 @@ extension AppState {
 
 extension AppState {
     var flowState: FlowState {
-        get {
-            FlowState(selectedHero: selectedHero)
-        }
-        set {
-            selectedHero = newValue.selectedHero
-        }
+        get { FlowState(selectedHero: selectedHero) }
+        set { selectedHero = newValue.selectedHero }
     }
 }
 
@@ -91,12 +88,22 @@ let appReducer = Reducer<AppState, AppAction, AppEnvironment>.combine(
     rootReducer.pullback(
         state: \AppState.rootState,
         action: /AppAction.root,
-        environment: { RootEnvironment(herosProvider: $0.herosProvider) }
+        environment: {
+            RootEnvironment(
+                herosProvider: $0.herosProvider,
+                persistency: $0.persistency
+            )
+        }
     ),
     detailsReducer.pullback(
         state: \AppState.detailsState,
         action: /AppAction.details,
-        environment: { DetailsEnvironment(herosProvider: $0.herosProvider) }
+        environment: {
+            DetailsEnvironment(
+                herosProvider: $0.herosProvider,
+                persistency: $0.persistency
+            )
+        }
     ),
     flowReducer.pullback(
         state: \AppState.flowState,

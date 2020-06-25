@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Comics: Decodable {
+struct Comics: Codable {
     let available: Int
     let items: [Comic]
 }

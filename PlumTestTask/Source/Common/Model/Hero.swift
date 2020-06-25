@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Hero: Hashable, Decodable {
+struct Hero: Hashable, Codable {
     let id: Int
     let name: String
     let description: String

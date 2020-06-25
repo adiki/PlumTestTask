@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Comic: Hashable, Decodable {
+struct Comic: Hashable, Codable {
     let name: String
     let resourceURI: String
     

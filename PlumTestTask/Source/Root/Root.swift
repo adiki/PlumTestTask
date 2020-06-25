@@ -19,30 +19,44 @@ struct RootState: Equatable {
 
 enum RootAction {
     case initialize
+    case didFailToLoadSquadHeros
+    case didLoadSqauadHeros([Hero])
     case didFailToFetchHeros
-    case select(hero: Hero)
     case didFetchHeros([Hero])
     case didFetchImageData(Data, hero: Hero)
     case didFailToFetchHeroImageData
+    case select(hero: Hero)
 }
 
 struct RootEnvironment {
     let herosProvider: HerosProvider
+    let persistency: Persistency
 }
 
 let rootReducer = Reducer<RootState, RootAction, RootEnvironment> { state, action, environment in
     switch action {
     case .initialize:
         state.status = .loading
-        return environment.herosProvider.fetchHeros()
+        let loadMySquad = environment.persistency.load(forName: Strings.squadHerosFilename)
+            .tryMap { try JSONDecoder().decode([Hero].self, from: $0) }
+            .map { RootAction.didLoadSqauadHeros($0) }
+            .replaceError(with: RootAction.didFailToLoadSquadHeros)
+        let fetchHeros = environment.herosProvider.fetchHeros()
             .map { RootAction.didFetchHeros($0) }
             .replaceError(with: RootAction.didFailToFetchHeros)
+            .eraseToEffect()
+        return Publishers.Merge(loadMySquad, fetchHeros)
             .receive(on: DispatchQueue.main)
             .eraseToEffect()
+    case .didFailToLoadSquadHeros:
+        return .none
+    case .didLoadSqauadHeros(let heros):
+        state.squadHeros = heros
+        return .none
     case .didFailToFetchHeros:
         state.status = .didFailToLoadHeros
         return .none
-    case let .didFetchHeros(heros):
+    case .didFetchHeros(let heros):
         state.allHeros = heros
         state.status = .idle
         return Publishers.MergeMany(heros.map { environment.herosProvider.imageData(forHero: $0) })
@@ -50,13 +64,13 @@ let rootReducer = Reducer<RootState, RootAction, RootEnvironment> { state, actio
             .replaceError(with: .didFailToFetchHeroImageData)
             .receive(on: DispatchQueue.main)
             .eraseToEffect()
-    case let .select(hero: hero):
-        state.selectedHero = hero
-        return .none
     case let .didFetchImageData(imageData, hero):
         state.herosToImageData[hero] = imageData
         return .none
     case .didFailToFetchHeroImageData:
+        return .none
+    case .select(let hero):
+        state.selectedHero = hero
         return .none
     }
 }

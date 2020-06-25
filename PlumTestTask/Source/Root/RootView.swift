@@ -10,8 +10,7 @@ import ComposableArchitecture
 import SwiftUI
 
 struct RootView: View {
-    @ObservedObject
-    private var viewStore: ViewStore<RootState, RootAction>
+    @ObservedObject private var viewStore: ViewStore<RootState, RootAction>
     private let flowDecorator: (AnyView) -> AnyView
     
     init(
@@ -30,43 +29,30 @@ struct RootView: View {
         let resultView: AnyView
         switch viewStore.status {
         case .loading:
-            resultView = ActivityIndicator(
-                isAnimating: .constant(true),
-                style: .large
-            )
-                .eraseToAnyView()
+            resultView = VStack {
+                if viewStore.squadHeros.isNotEmpty {
+                    MySquadView(viewStore: viewStore)
+                }
+                ActivityIndicator(
+                    isAnimating: .constant(true),
+                    style: .large
+                )
+                .frame(maxHeight: .infinity, alignment: .center)
+            }
+            .padding(.top, 1)
+            .eraseToAnyView()
         case .didFailToLoadHeros:
             resultView = Text(Strings.didFailToLoadHeros)
+                .font(.title)
+                .foregroundColor(.white)
                 .eraseToAnyView()
         case .idle:
             resultView = List {
                 if viewStore.squadHeros.isNotEmpty {
-                    VStack(alignment: .leading) {
-                        Text(Strings.mySquad)
-                            .font(.title)
-                            .fontWeight(.bold)
-                            .foregroundColor(.white)
-                            .padding([.leading, .trailing], 16)
-                            .padding(.top, 8)
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack {
-                                ForEach(viewStore.squadHeros, id: \.self) { hero in
-                                    Button(action: { self.viewStore.send(.select(hero: hero)) }) {
-                                        HeroCell(
-                                            hero: hero,
-                                            imageData: self.viewStore.herosToImageData[hero]
-                                        )
-                                    }
-                                    .padding([.trailing], 4)
-                                }
-                            }
-                            .padding([.leading, .trailing], 16)
-                            .padding(.bottom, 8)
-                        }
-                    }
-                    .listRowInsets(EdgeInsets())
-                    .listRowBackground(Color.background)
-                    .padding([.bottom], 8)
+                    MySquadView(viewStore: viewStore)
+                        .listRowInsets(EdgeInsets())
+                        .listRowBackground(Color.background)
+                        .padding(.bottom, 8)
                 }
                 ForEach(viewStore.allHeros, id: \.self) { hero in
                     HeroRow(
@@ -90,7 +76,10 @@ struct RootView_Previews: PreviewProvider {
             store: Store(
                 initialState: AppState(),
                 reducer: appReducer,
-                environment: AppEnvironment(herosProvider: HerosNetworkProvider())
+                environment: AppEnvironment(
+                    herosProvider: HerosNetworkProvider(),
+                    persistency: FilePersistency()
+                )
             )
         )
     }

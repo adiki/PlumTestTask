@@ -23,7 +23,6 @@ struct HeroRow: View {
         Button(action: { [viewStore, hero] in viewStore.send(.select(hero: hero)) }) {
             HStack {
                 image(forData: self.viewStore.herosToImageData[hero])
-                    .renderingMode(.original)
                     .resizable()
                     .scaledToFill()
                     .foregroundColor(.white)

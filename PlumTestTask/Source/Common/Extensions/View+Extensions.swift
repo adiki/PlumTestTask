@@ -32,7 +32,10 @@ extension View {
     }
     
     func image(forData data: Data?) -> Image {
-        Image(uiImage: data.flatMap(UIImage.init(data:)) ?? UIImage())
+        data
+            .flatMap(UIImage.init(data:))
+            .map(Image.init(uiImage:))?.renderingMode(.original)
+            ?? Image(systemName: "circle.fill")
     }
 }
 

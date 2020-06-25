@@ -28,10 +28,12 @@ enum DetailsAction {
     case recruitOrFireButtonTapped(Hero)
     case fire(Hero)
     case fireConfirmationAlertDismissed
+    case didFailToSaveHeros(Error)
 }
 
 struct DetailsEnvironment {
     let herosProvider: HerosProvider
+    let persistency: Persistency
 }
 
 let detailsReducer = Reducer<DetailsState, DetailsAction, DetailsEnvironment> { state, action, environment in
@@ -58,16 +60,31 @@ let detailsReducer = Reducer<DetailsState, DetailsAction, DetailsEnvironment> { 
     case .recruitOrFireButtonTapped(let hero):
         if state.doesSquadContain(hero: hero) {
             state.isFiringHeroConfirmationPresented = true
+            return .none
         } else {
             state.squadHeros.insert(hero, at: 0)
+            return environment.persistency.save(heros: state.squadHeros)
+                
         }
-        return .none
     case .fire(let hero):
         state.squadHeros.removeAll(where: { $0 == hero })
-        return .none
+        return environment.persistency.save(heros: state.squadHeros)
     case .fireConfirmationAlertDismissed:
         state.isFiringHeroConfirmationPresented = false
         return .none
-        
+    case .didFailToSaveHeros:
+        return .none
+    }
+}
+
+extension Persistency {
+    fileprivate func save(heros: [Hero]) -> Effect<DetailsAction, Never> {
+        save(
+            data: try! JSONEncoder().encode(heros),
+            forName: Strings.squadHerosFilename
+        )
+        .promoteValue()
+        .catch { Just(DetailsAction.didFailToSaveHeros($0)) }
+        .eraseToEffect()
     }
 }

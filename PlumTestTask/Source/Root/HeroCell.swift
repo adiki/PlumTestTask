@@ -20,7 +20,6 @@ struct HeroCell: View {
     var body: some View {
         VStack {
             image(forData: imageData)
-                .renderingMode(.original)
                 .resizable()                
                 .scaledToFill()
                 .foregroundColor(.white)
