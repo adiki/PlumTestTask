@@ -34,8 +34,8 @@ struct HeroRow: View {
                     .foregroundColor(.white)
                     .lineLimit(1)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(8)
-                    .padding(.trailing, 16)
+                    .padding(Insets.small)
+                    .padding(.trailing, Insets.standard)
                 Image(systemName: "chevron.right")
                     .foregroundColor(Color.white.opacity(0.2))
             }

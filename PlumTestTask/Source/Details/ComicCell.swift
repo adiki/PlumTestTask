@@ -27,7 +27,7 @@ struct ComicCell: View {
                 .font(.subheadline)
                 .fontWeight(.semibold)
                 .foregroundColor(.white)
-                .padding(4)
+                .padding(Insets.xSmall)
         }
     }
 }

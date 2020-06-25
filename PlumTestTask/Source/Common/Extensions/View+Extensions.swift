@@ -28,7 +28,7 @@ extension View {
             RoundedRectangle(cornerRadius: 8)
                 .stroke(Color.appRed, lineWidth: 4)
         )
-        .padding(16)
+        .padding(Insets.standard)
     }
     
     func image(forData data: Data?) -> Image {

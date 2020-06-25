@@ -52,7 +52,7 @@ struct RootView: View {
                     MySquadView(viewStore: viewStore)
                         .listRowInsets(EdgeInsets())
                         .listRowBackground(Color.background)
-                        .padding(.bottom, 8)
+                        .padding(.bottom, Insets.small)
                 }
                 ForEach(viewStore.allHeros, id: \.self) { hero in
                     HeroRow(

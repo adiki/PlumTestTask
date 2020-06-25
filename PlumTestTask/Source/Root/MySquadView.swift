@@ -24,7 +24,7 @@ struct MySquadView: View {
                 .font(.title)
                 .fontWeight(.bold)
                 .foregroundColor(.white)
-                .padding([.leading, .trailing], 16)
+                .padding([.leading, .trailing], Insets.standard)
                 .padding(.top, 8)
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
@@ -35,11 +35,11 @@ struct MySquadView: View {
                                 imageData: self.viewStore.herosToImageData[hero]
                             )
                         }
-                        .padding([.trailing], 4)
+                        .padding(.trailing, Insets.xSmall)
                     }
                 }
-                .padding([.leading, .trailing], 16)
-                .padding(.bottom, 8)
+                .padding([.leading, .trailing], Insets.standard)
+                .padding(.bottom, Insets.small)
             }
         }
     }

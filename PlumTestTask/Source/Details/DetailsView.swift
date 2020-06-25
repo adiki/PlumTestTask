@@ -37,49 +37,49 @@ struct DetailsView: View {
                             .font(.largeTitle)
                             .fontWeight(.bold)
                             .foregroundColor(.white)
-                            .padding([.leading], 16)
+                            .padding(.leading, Insets.standard)
                         Button(action: {
                             self.viewStore.send(.recruitOrFireButtonTapped(hero))
                         }) {
                             Text(self.viewStore.state.buttonTitle(for: hero))
                                 .font(.headline)
                                 .foregroundColor(.white)
-                                .padding(16)
+                                .padding(Insets.standard)
                         }
                         .frame(maxWidth: .infinity)
                         .style(for: hero, state: self.viewStore.state)
                         Text(hero.description)
                             .font(.subheadline)
                             .foregroundColor(.white)
-                            .padding([.leading, .bottom], 16)
+                            .padding([.leading, .bottom], Insets.standard)
                         if hero.latestComic != nil {
                             Text(Strings.lastAppearedIn)
                                 .font(.headline)
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
-                                .padding([.leading, .trailing], 16)
-                                .padding([.top, .bottom], 8)
-                            HStack(spacing: 16) {
+                                .padding([.leading, .trailing], Insets.standard)
+                                .padding([.top, .bottom], Insets.small)
+                            HStack(spacing: Insets.standard) {
                                 ComicCell(
                                     comic: hero.latestComic!,
                                     imageData: self.viewStore.comicsToImageData[hero.latestComic!]
                                 )
-                                .frame(width: geometry.size.width / 2 - 24)
+                                    .frame(width: self.comicViewWidth(rootSize: geometry.size))
                                 if hero.comicJustBeforeLatest != nil {
                                     ComicCell(
                                         comic: hero.comicJustBeforeLatest!,
                                         imageData: self.viewStore.comicsToImageData[hero.comicJustBeforeLatest!]
                                     )
-                                    .frame(width: geometry.size.width / 2 - 24)
+                                    .frame(width: self.comicViewWidth(rootSize: geometry.size))
                                 }
                             }
-                            .padding([.leading, .trailing], 16)
+                            .padding([.leading, .trailing], Insets.standard)
                         }
                         if hero.comics.available > 2 {
                             Text(Strings.andOtherComic(number: hero.comics.available - 2))
                                 .font(.headline)
                                 .foregroundColor(.white)
-                                .padding(32)
+                                .padding(Insets.large)
                                 .frame(minWidth: 0, maxWidth: .infinity)
                         }
                     }
@@ -100,6 +100,10 @@ struct DetailsView: View {
             )
         }
         .eraseToAnyView()
+    }
+    
+    private func comicViewWidth(rootSize: CGSize) -> CGFloat {
+        rootSize.width / 2 - Insets.standard * 1.5
     }
 }
 
@@ -128,7 +132,6 @@ struct DetailsView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             ZStack {
-                Color.background.edgesIgnoringSafeArea(.all)
                 DetailsView(
                     viewStore: Store(
                         initialState: AppState(),

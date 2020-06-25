@@ -53,6 +53,7 @@
 		2CE7B24C24A4E78D006D1E87 /* HerosProvider+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7B24B24A4E78D006D1E87 /* HerosProvider+Mock.swift */; };
 		2CE7B24F24A4E7EE006D1E87 /* Persistency+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7B24D24A4E7C3006D1E87 /* Persistency+Mock.swift */; };
 		2CE7B25224A4EA3E006D1E87 /* Comic+Fixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7B25024A4EA3B006D1E87 /* Comic+Fixture.swift */; };
+		2CE7B25424A4EADA006D1E87 /* Insets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7B25324A4EADA006D1E87 /* Insets.swift */; };
 		2CEA006124A12A8900A2A857 /* DarkHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEA006024A12A8900A2A857 /* DarkHostingController.swift */; };
 /* End PBXBuildFile section */
 
@@ -124,6 +125,7 @@
 		2CE7B24B24A4E78D006D1E87 /* HerosProvider+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HerosProvider+Mock.swift"; sourceTree = "<group>"; };
 		2CE7B24D24A4E7C3006D1E87 /* Persistency+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Persistency+Mock.swift"; sourceTree = "<group>"; };
 		2CE7B25024A4EA3B006D1E87 /* Comic+Fixture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comic+Fixture.swift"; sourceTree = "<group>"; };
+		2CE7B25324A4EADA006D1E87 /* Insets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Insets.swift; sourceTree = "<group>"; };
 		2CEA006024A12A8900A2A857 /* DarkHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkHostingController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -224,6 +226,7 @@
 			children = (
 				2C98832524A0DCA5003D2595 /* Images.swift */,
 				2CE1555024A20DF100C018DE /* Strings.swift */,
+				2CE7B25324A4EADA006D1E87 /* Insets.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 				2CEA006124A12A8900A2A857 /* DarkHostingController.swift in Sources */,
 				2C179BF524A4A340006BB53C /* Effect+Extensions.swift in Sources */,
 				2CBAABAA24A3C45400032EA5 /* Thumbnail.swift in Sources */,
+				2CE7B25424A4EADA006D1E87 /* Insets.swift in Sources */,
 				2CE1554B24A1E20C00C018DE /* DetailsView.swift in Sources */,
 				2C98833924A11497003D2595 /* HeroRow.swift in Sources */,
 				2C98833B24A11924003D2595 /* Color+Extensions.swift in Sources */,

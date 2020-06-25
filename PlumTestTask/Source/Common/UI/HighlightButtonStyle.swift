@@ -18,7 +18,7 @@ struct HighlightButtonStyle: ButtonStyle {
     
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
-            .padding(16)
+            .padding(Insets.standard)
             .background(configuration.isPressed ? color.opacity(0.5) : color)
             .cornerRadius(8)
     }
