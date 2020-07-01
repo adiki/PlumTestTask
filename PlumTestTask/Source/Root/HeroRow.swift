@@ -19,9 +19,9 @@ struct HeroRow: View {
     }
     
     var body: some View {
-        Button(action: { [viewStore, hero] in viewStore.send(.select(hero: hero)) }) {
+        Button(action: { self.viewStore.send(.select(hero: self.hero)) }) {
             HStack {
-                image(forData: self.viewStore.herosToImageData[hero])
+                image(forData: viewStore.herosToImageData[hero])
                     .resizable()
                     .scaledToFill()
                     .foregroundColor(.white)

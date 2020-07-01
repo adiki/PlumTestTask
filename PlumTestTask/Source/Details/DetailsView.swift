@@ -85,7 +85,7 @@ struct DetailsView: View {
                 }
             }
         }
-        .edgesIgnoringSafeArea([.top])    
+        .edgesIgnoringSafeArea(.top)    
         .alert(isPresented: self.viewStore.binding(
             get: { $0.isFiringHeroConfirmationPresented },
             send: .fireConfirmationAlertDismissed
