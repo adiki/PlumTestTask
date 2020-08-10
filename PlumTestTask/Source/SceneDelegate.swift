@@ -6,8 +6,9 @@
 //  Copyright © 2020 sliwa.adrian. All rights reserved.
 //
 
-import UIKit
+import ComposableArchitecture
 import SwiftUI
+import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -19,12 +20,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
         // Create the SwiftUI view that provides the window contents.
-        let contentView = Text("Hello, World!")
+        let contentView = RootViewBuilder.makeRootView(
+            store: Store(
+                initialState: AppState(),
+                reducer: appReducer,
+                environment: AppEnvironment(
+                    mainQueue: DispatchQueue.main.eraseToAnyScheduler(),
+                    herosProvider: HerosNetworkProvider(),
+                    persistency: FilePersistency()
+                )
+            )
+        )
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: contentView)
+            window.rootViewController = DarkHostingController(rootView: contentView)
             self.window = window
             window.makeKeyAndVisible()
         }
